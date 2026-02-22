@@ -209,3 +209,4 @@ node_modules
 .next
 .turbo
 out
+.temp

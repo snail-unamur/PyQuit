@@ -1,0 +1,69 @@
+{
+  "name": "pyquit",
+  "version": "1.0.0",
+  "description": "The VScode extension for pyquit",
+  "displayName": "PyQuit",
+  "icon": "media/icon.png",
+  "galleryBanner": {
+    "color": "#1A202C",
+    "theme": "dark"
+  },
+  "categories": [
+    "Other",
+    "SCM Providers"
+  ],
+  "keywords": [
+    "education",
+    "extension",
+    "python"
+  ],
+  "homepage": "https://github.com/snail-unamur/PyQuit#readme",
+  "bugs": {
+    "url": "https://github.com/snail-unamur/PyQuit/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snail-unamur/PyQuit.git"
+  },
+  "license": "MIT",
+  "author": "Snail-Unamur",
+  "publisher": "snail-unamur",
+  "main": "./out/extension.js",
+  "types": "./out/extension.d.ts",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "activationEvents": [
+    "onLanguage:python",
+    "onDocuments:python"
+  ],
+  "contributes": {},
+  "installationInfo": {
+    "identifier": "snail-unamur.pyquit",
+    "version": "1.0.1",
+    "source": "Local",
+    "cacheSize": "2B",
+    "categories": [
+      "Other",
+      "SCM Providers"
+    ]
+  },
+  "files": [
+    "out/**",
+    "README.md",
+    "package.json"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "clean": "rm -rf out"
+  },
+  "dependencies": {
+    "@pyquit/rules": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0"
+  }
+}

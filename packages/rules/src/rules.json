@@ -6,7 +6,7 @@
     "category": "performance"
   },
   "PY002": {
-    "title": "Add Type Hints",
+    "title": "Concaténation de Chaînes dans Boucles",
     "severity": "warning",
     "docsPath": "/rules/py002",
     "category": "performance"

@@ -3,15 +3,11 @@ import { House, Moon, Sun } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Search } from "@/global";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useTheme } from "@/providers/theme-provider";
 import { Button } from "../ui/button";
 
 export function AppHeader() {
-  const router = useRouter();
-  const [rule, setRule] = useState("");
   const { theme, setTheme } = useTheme();
 
   const handleTheme = () => {
@@ -21,11 +17,6 @@ export function AppHeader() {
       setTheme("dark");
     }
   };
-
-  useEffect(() => {
-    if (!rule) return;
-    router.push(`/${rule}`);
-  }, [rule, router]);
 
   return (
     <div className="sticky top-0 z-50 bg-[#18181b]">
@@ -45,10 +36,7 @@ export function AppHeader() {
             </Link>
           </div>
           <div className="relative flex gap-1 md:gap-2">
-            <Search
-              className="md:w-75 w-fit"
-              onSelect={(rule) => setRule(rule)}
-            />
+            <Search className="md:w-75 w-fit" />
             <Button
               onClick={handleTheme}
               className="bg-sidebar! hover:bg-sidebar/70! active:bg-sidebar/50! outline-none! border-none!"

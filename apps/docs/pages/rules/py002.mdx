@@ -1,0 +1,88 @@
+# Concaténation de Chaînes dans Boucles
+
+## 📌 Description
+
+Utiliser l'opérateur `+` pour concaténer des chaînes dans une boucle crée un **nouvel objet chaîne à chaque itération**, ce qui engendre une multiplication de la consommation mémoire et des allocations inutiles.
+
+---
+
+## ❌ Anti-Pattern (Ce qu'il ne faut pas faire)
+
+```python
+# Mauvaise approche - O(n²) en complexité mémoire
+mots = ["Python", "est", "génial"]
+phrase = ""
+for mot in mots:
+    phrase += mot + " "  # Crée une nouvelle chaîne à chaque itération
+print(phrase)
+```
+
+### Problèmes:
+
+- **Complexité O(n²)**: Chaque concaténation recopie toute la chaîne en mémoire
+- **Allocation excessive**: Pour n mots, on alloue ~n² caractères au total
+- **Performance dégradée**: Sur 10 000 mots, c'est dramatique (100M allocations!)
+
+---
+
+## ✅ Pattern (La bonne pratique)
+
+```python
+# Bonne approche - O(n) en complexité mémoire
+mots = ["Python", "est", "génial"]
+phrase = " ".join(mots)  # Allocation mémoire unique
+print(phrase)
+```
+
+### Avantages:
+
+- **Complexité O(n)**: Une seule allocation de mémoire
+- **Performance optimale**: Même pour des milliers de chaînes
+- **Lisibilité**: Code plus pythonique et expressif
+
+---
+
+## 📊 Comparaison Mémoire
+
+```python
+import sys
+
+# Avec + (inefficace)
+phrase1 = ""
+for mot in ["a", "b", "c", "d", "e"]:
+    phrase1 += mot
+print(f"Chaîne avec +: {sys.getsizeof(phrase1)} bytes")
+
+# Avec join (efficace)
+phrase2 = "".join(["a", "b", "c", "d", "e"])
+print(f"Chaîne avec join: {sys.getsizeof(phrase2)} bytes")
+
+# Sur une grande liste, l'écart est ÉNORME!
+```
+
+---
+
+## 🎯 Quand utiliser quoi
+
+| Situation                  | À utiliser              |
+| -------------------------- | ----------------------- |
+| Boucle/itération           | `.join()` ✅            |
+| Une ou deux concaténations | `+` ou f-string ✅      |
+| Chaîne complexe formatée   | f-string ✅             |
+| Construire pas à pas       | `.join()` avec liste ✅ |
+
+---
+
+## Cas similaires (à éviter)
+
+```python
+# ❌ Mauvais aussi
+phrase = ""
+phrase = phrase + "a"
+phrase = phrase + "b"
+phrase = phrase + "c"
+
+# ✅ À faire
+parties = ["a", "b", "c"]
+phrase = "".join(parties)
+```

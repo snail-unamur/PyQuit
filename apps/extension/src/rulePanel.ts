@@ -45,7 +45,7 @@ async function openRulePanel(context: vscode.ExtensionContext, ruleId: string) {
       fileName,
     );
 
-    // AFTER: TAILWIND SUPPORT DIFFICULT
+    // AFTER: TAILWIND SUPPORT DIFFICULT WITH CDN
     // const cssUri = vscode.Uri.joinPath(
     //   context.extensionUri,
     //   "..",
